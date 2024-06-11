@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(12, 12, 83);
+    width: 100vw;
+    height: 100vh;
+    margin: 1rem;
+    overflow: hidden;
+}
+.container{
+    margin-inline: auto;
+    margin-top: 20%;
+    /* it's also can be used */
+    /* margin: 0 auto; */
+    display: flex;
+    /* by defualt flex-direction is set up to row */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    border: 2px solid tomato;
+    width: 70%;
+    /* height: 70%; */
+    gap: 1rem;
+    /* flex-wrap used to wrap the child divs into multiple rows */
+    flex-wrap: wrap;
+    /* align-content can only be used when flex-wrap property value is
+    set to some value */
+   align-content: end;
+   padding: 1rem;
+}
+.item{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    border: 1px solid goldenrod;
+    border-radius: 1rem;
+    width: 150px;
+    height: 150px;
+   font-size: 2rem;
+}
+.item-10{
+    /* flex-grow property is used to fill-up the remaining space 
+    of the current div */
+    flex-grow: 1;
+}
+.item-1{
+    /* flex-shring is used to set how fast a child div should shrink
+    relative to other div elements */
+    flex-shrink: 5;
+}
+.item-2{
+    /* flex-basis is used to change the by default width value of a child div */
+    flex-basis: 300px;
+}
+.item-10{
+    /* it's a shorthand property to write flex-grow/flex-shrink/flex-basis in one line */
+    flex: 1;
+}
+/* align-self property used to set the individual child in required location
+and the order property used to change the order of the child divs written by
+in the html code */

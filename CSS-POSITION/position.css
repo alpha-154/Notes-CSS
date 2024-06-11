@@ -1,0 +1,169 @@
+/* ========== POSITION PROPERTY : (STATIC, RELATIVE,ABSOLUTE,FIXED,STICKY) === */
+
+
+
+/* ================       BASICS (STARTS)   ================== */
+/* The CSS position property is used to specify the positioning method of an element
+ within its containing element. It has several possible values, each affecting the element's 
+ placement and behavior on the page. Here are the main values for the position property: */
+
+ /* ======  STATIC ======== */
+/* 1. Default value.
+   2. Elements are positioned in the normal flow of the document.
+   3. The top, right, bottom, and left properties have no effect. */
+/* example : 
+    .example {
+    position: static;
+    }
+ */
+
+ /*  ==========  RELATIVE ========  */
+/* 1. Positioned relative to its normal position in the document flow.
+   2. The top, right, bottom, and left properties can be used to offset the element from its normal position. */
+/*  .example {
+    position: relative;
+    top: 10px;
+    left: 20px;
+  }
+ */
+
+/*  ==========  ABSOLUTE ============  */
+/* 1. Positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+   2. If there is no positioned ancestor, it is positioned relative to the initial containing block (usually the <html> element).
+   3. The top, right, bottom, and left properties are used for precise positioning. */
+/* .example {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
+ */
+
+/* ============  FIXED ============== */
+/* 1. Positioned relative to the viewport (browser window).
+   2. It stays fixed even when the page is scrolled.
+   3. The top, right, bottom, and left properties are used for precise positioning. */
+/* .example {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+ */
+
+/* ============  STICKY ============== */
+/* 1. Acts like relative within its containing element until a given offset threshold is met, then it is treated as fixed relative to the viewport.
+   2. The top, right, bottom, and left properties can be used to set the offset threshold. */
+/* .example {
+  position: sticky;
+  top: 20px;
+}
+ */
+
+ /*  ===============  BASICS (ENDS) =============== */
+
+
+
+ /* =============  QUESTION STARTS ========== */
+/* Why using postion relative to the parent element & position absolute
+to the child element while try to overlap child element content
+with the parent element content ?? */
+
+/* SOLUTION :  The use of position: relative; on a parent div and position: absolute; on a child div 
+is a common technique in CSS for achieving overlap or layering of elements within a container. 
+This is because the positioning properties (relative, absolute, fixed, sticky) interact 
+with each other, and using absolute positioning in relation to a relative positioned parent 
+can yield specific layout effects. Here's why this combination is often used:
+
+1. Relative Positioning Establishes a Reference Context:
+When you set position: relative; on a parent element, it 
+establishes a new positioning context for its absolutely 
+positioned children. This means that any child element with 
+position: absolute; will be positioned relative to the nearest
+positioned ancestor (in this case, the parent with position: relative;).
+2. Absolute Positioning Allows Overlapping:
+position: absolute; removes the element from the normal flow of the document
+and positions it relative to its nearest positioned ancestor. This makes it
+easy to overlap elements and control their placement precisely.
+ */
+/* ================ QUESTION (ENDS) =============== */
+
+/* TIPS :  */
+/* 1. use position property relative when you want to adjust the element 
+    with normal flow of the element and use position property absolute when
+    you want extract the element from the normal flow of the element 
+    and also with the `relative` property vacant space due to displace of the
+    element doesn't get fill up by subsequent element while with the `absolute`
+    property it gets filled by the subsequent elements
+   2. `fixed` property behaves same as `absolute` (that means it also 
+   get removed from the document but when scrolling starts fixed stick
+   to its initial position while absolute property doesn't
+   3. `sticky` property only works when top property assigned to it . Here, 
+   top property means how much from the top should maintain after scrolling
+   to next viewport window */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: darkslateblue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    position: relative; 
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+    border: 1px solid red;
+}
+.item{
+    width: 150px;
+    height: 150px;
+    background-color: chartreuse;
+    color: darkslateblue;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.2rem;
+    border: 2px solid black;
+}
+
+.item-1{
+    position: absolute;
+    top: -30px;
+    right: -50px;
+    /* z-index used to overlap one element with another */
+    z-index: -1;
+    opacity: 0.5;
+    /* bottom: ;
+    right: ; */
+}
+.item-2{
+    position: relative;
+    top: -180px;
+    left: -160px;
+    opacity: 0.9;
+}
+.item-3{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: -1;
+}
+.itme-4{
+    position: sticky;
+    top: 105px;
+}
+.heading{
+    margin-top: 5000px;
+    z-index: 2;
+}
